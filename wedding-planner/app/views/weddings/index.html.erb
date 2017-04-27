@@ -2,7 +2,58 @@
 
 <ul>
 <li>Pick a date</li>
+ <input type="date" class="datepicker">
 <li>Set a budget</li>
+<div id='test5'></div>
 <li>Create a guestlist</li>
 <li>Choose a venue</li>
+
+<%
+@parsedData = JSON.parse(@body)
+%>
+
+<h1>Hotels</h1>
+
+<ul class='row'>
+<% @parsedData["businesses"].each do |hi| %>
+<li class='col s6 m4 l3'>
+<div class='card small clearfix'>
+<div class='card-image'>
+              <img src="<%= hi["image_url"] %>">
+              <span class="card-title"><%= hi["name"].html_safe %></span>
+            </div>
+            <div class="card-content">
+              <p><%= hi["price"] %><br>
+              <%= hi["location"]["city"] %>, <%= hi["location"]["state"] %></p>
+            </div>
+            <div class="card-action">
+              <a href='<%= hi["url"] %>'>Yelp link</a>
+            </div>
+
+          </div>
+</li>
+<% end %>
 </ul>
+
+
+
+<script>
+  var slider = document.getElementById('test5');
+  noUiSlider.create(slider, {
+   start: [5000, 7000],
+   connect: true,
+   step: 1000,
+   range: {
+     'min': 0,
+     'max': 20000
+   },
+   format: wNumb({
+     decimals: 0
+   })
+  });
+
+  $('.datepicker').pickadate({
+    selectMonths: true, // Creates a dropdown to control month
+    selectYears: 15 // Creates a dropdown of 15 years to control year
+  });
+</script>
