@@ -18,4 +18,6 @@ class UsersController < ApplicationController
     puts response.body
     @body = response.body
   end
+  def destroy
+  end
 end
