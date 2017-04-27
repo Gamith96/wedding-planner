@@ -1,3 +1,27 @@
 <h1>Hello user</h1>
 
 <h2>Ben's edit</h2>
+
+
+<%
+@parsedData = JSON.parse(@body)
+%>
+
+<h1>Hotels</h1>
+<table width=100%><tr>
+<%
+@i = 0
+@parsedData["businesses"].each do |hi| %>
+<td valign=top align=center>
+  <h2><a href="/businesses/<%= hi["id"]%>"><%= hi["name"].html_safe %></a></h2>
+  <img width=100px src="<%= hi["image_url"] %>">
+</td>
+<%
+@i += 1
+if (@i % 5) == 0 %>
+  </tr><tr>
+<%
+end
+
+end %>
+</table>
