@@ -1,8 +1,3 @@
-<h1>Hello user</h1>
-
-
-<h2>Ben's edit</h2>
-
-<h2>Adams change</h2>
-
-<h2>Artur Lan's changes</h2>
+<%= @users.each do |user| %>
+<h4><%= user[:email] %></h4>
+<% end %>
