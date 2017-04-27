@@ -6,4 +6,6 @@ class UsersController < ApplicationController
   def create
     #code
   end
+  def destroy
+  end
 end
