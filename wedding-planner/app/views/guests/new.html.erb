@@ -3,5 +3,7 @@
   <%= f.text_field :name %>
   <%= f.label :email %>
   <%= f.text_field :email %>
+  <%= f.label :rsvp %>
+  <%= f.check_box( :rsvp, {}, "yes", "no") %>
     <%= f.submit %>
     <% end %>
