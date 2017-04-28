@@ -1,10 +1,27 @@
 <h1>Wedding To Do's</h1>
 
 <ul>
+<% @weddings.each do |wedding| %>
+  <li><a href="/weddings/<%= wedding[:id] %>"><%= wedding[:couple_name] %></a></li>
+<% end %>
+</ul>
+
+<form action='/weddings' method='POST'>
+<%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+<ul>
+<li>Couple's names</li>
+<input type="text" name="couple_name">
 <li>Pick a date</li>
- <input type="date" class="datepicker">
+ <input type="date" name="date" class="datepicker">
 <li>Set a budget</li>
+<div class='row'>
 <div id='test5'></div>
+</div>
+<div class='row'>
+  <input disabled id='min-val' class='col s6'>
+  <input disabled id='max-val' class='col s6'>
+
+</div>
 <li>Create a guestlist</li>
 <li>Choose a venue</li>
 
@@ -14,9 +31,38 @@
 
 <h1>Hotels</h1>
 
-<ul class='row'>
-<% @parsedData["businesses"].each do |hi| %>
-<li class='col s6 m4 l3'>
+<ul id='cards' class='row'>
+
+
+
+<!--
+possible other location card layout
+
+<% @parsedData["businesses"].sample(15).each do |hi| %>
+<li class='col s6 m4 l3' style='opacity:0'>
+<div class='card small clearfix'>
+<div class="card-image waves-effect waves-block waves-light">
+      <img class='activator' style='max-height:100px' src="<%= hi["image_url"] %>">
+    </div>
+    <div class="card-content">
+      <span class="card-title activator grey-text text-darken-4"><%= hi["name"].html_safe %> <i class="material-icons right">more_vert</i></span>
+    </div>
+    <div class="card-action">
+              <a href='<%= hi["url"] %>'>Yelp link</a>
+            </div>
+    <div class="card-reveal">
+      <span class="card-title grey-text text-darken-4"><%= hi["name"].html_safe %> <i class="material-icons right">close</i></span>
+      <p><%= hi["price"] %><br>
+              <%= hi["location"]["city"] %>, <%= hi["location"]["state"] %></p>
+    </div>
+          </div>
+</li>
+<% end %>
+-->
+
+
+<% @parsedData["businesses"].sample(15).each do |hi| %>
+<li class='col s6 m4 l3' style='opacity:0'>
 <div class='card small clearfix'>
 <div class='card-image'>
               <img src="<%= hi["image_url"] %>">
@@ -35,6 +81,8 @@
 <% end %>
 </ul>
 
+<button class='btn'>Submit</button>
+</form>
 
 
 <script>
@@ -52,8 +100,19 @@
    })
   });
 
+  slider.noUiSlider.on('update', function( values, handle ) {
+    $('#min-val').val(values[0]);
+    $('#max-val').val(values[1]);
+  });
+
+
+
   $('.datepicker').pickadate({
     selectMonths: true, // Creates a dropdown to control month
     selectYears: 15 // Creates a dropdown of 15 years to control year
   });
+
+  $(function(){
+    Materialize.showStaggeredList('#cards')
+  })
 </script>
