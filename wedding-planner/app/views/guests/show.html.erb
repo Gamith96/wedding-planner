@@ -1,8 +1,7 @@
 <h2>Guest info:</h2>
-<% @guests.each do |guest| %>
-  <%= @guest[:name] %>
-  <%= @guest[:email] %>
-  <%= @guest[:rsvp] %>
-  <%= @guest[:wedding_id] %>
-<% end %>
+  Guest ID: <%= @guest[:id] %>
+  Guest Name: <%= @guest[:name] %>
+  Guest Email: <%= @guest[:email] %>
+  RSVP: <%= @guest[:rsvp] %>
+  For Wedding ID:<%= @guest[:wedding_id] %>
 <%= link_to "Back" %>
