@@ -1,7 +1,10 @@
 <h1>Wedding To Do's</h1>
 
 <form action='/weddings' method='POST'>
+<%= hidden_field_tag :authenticity_token, form_authenticity_token %>
 <ul>
+<li>Couple's names</li>
+<input type="text" name="couple_name">
 <li>Pick a date</li>
  <input type="date" name="date" class="datepicker">
 <li>Set a budget</li>
@@ -9,8 +12,9 @@
 <div id='test5'></div>
 </div>
 <div class='row'>
-  <div id='min-val' class='col s6'></div>
-  <div id='max-val' class='col s6'></div>
+  <input disabled id='min-val' class='col s6'>
+  <input disabled id='max-val' class='col s6'>
+
 </div>
 <li>Create a guestlist</li>
 <li>Choose a venue</li>
@@ -62,8 +66,8 @@
   });
 
   slider.noUiSlider.on('update', function( values, handle ) {
-    $('#min-val').html(values[0]);
-    $('#max-val').html(values[1]);
+    $('#min-val').val(values[0]);
+    $('#max-val').val(values[1]);
   });
 
 

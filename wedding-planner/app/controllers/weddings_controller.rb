@@ -24,15 +24,15 @@ class WeddingsController < ApplicationController
       @body = response.body
   end
   def show
-    @wedding = Wedding.find_by(id: params[:id])
+    @wedding = Wedding.find_by(id: params[:id], user_id: current_user.id)
   end
   def create
-    Weddings.create(couple_name: "temp",
-      wedding_date: params[:text],
-      max_budget: 10000,
-      min_budget: 5000,
+    Wedding.create(couple_name: params[:couple_name],
+      wedding_date: params[:date],
+      max_budget: params[:max_val],
+      min_budget: params[:min_val],
       location_id: 1,
-      user_id: 1
+      user_id: current_user.id
       )
     redirect_to(:back)
   end
