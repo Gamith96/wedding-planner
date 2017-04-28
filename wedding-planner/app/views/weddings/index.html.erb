@@ -32,7 +32,36 @@
 <h1>Hotels</h1>
 
 <ul id='cards' class='row'>
-<% @parsedData["businesses"].each do |hi| %>
+
+
+
+<!--
+possible other location card layout
+
+<% @parsedData["businesses"].sample(15).each do |hi| %>
+<li class='col s6 m4 l3' style='opacity:0'>
+<div class='card small clearfix'>
+<div class="card-image waves-effect waves-block waves-light">
+      <img class='activator' style='max-height:100px' src="<%= hi["image_url"] %>">
+    </div>
+    <div class="card-content">
+      <span class="card-title activator grey-text text-darken-4"><%= hi["name"].html_safe %> <i class="material-icons right">more_vert</i></span>
+    </div>
+    <div class="card-action">
+              <a href='<%= hi["url"] %>'>Yelp link</a>
+            </div>
+    <div class="card-reveal">
+      <span class="card-title grey-text text-darken-4"><%= hi["name"].html_safe %> <i class="material-icons right">close</i></span>
+      <p><%= hi["price"] %><br>
+              <%= hi["location"]["city"] %>, <%= hi["location"]["state"] %></p>
+    </div>
+          </div>
+</li>
+<% end %>
+-->
+
+
+<% @parsedData["businesses"].sample(15).each do |hi| %>
 <li class='col s6 m4 l3' style='opacity:0'>
 <div class='card small clearfix'>
 <div class='card-image'>
