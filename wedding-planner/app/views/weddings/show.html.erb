@@ -2,7 +2,7 @@
 
 <h2><%= @wedding[:couple_name] %></h2>
 
-<h3><%= @wedding[:wedding_date] %></h3>
+<h3><%= @wedding[:wedding_date].strftime("Printed on %m/%d/%Y") %></h3>
 
 at
 
