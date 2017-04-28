@@ -2,9 +2,15 @@
 
 <ul>
 <li>Pick a date</li>
- <input type="date" class="datepicker">
+ <input type="date" name="date" class="datepicker">
 <li>Set a budget</li>
+<div class='row'>
 <div id='test5'></div>
+</div>
+<div class='row'>
+  <div id='min-val' class='col s6'></div>
+  <div id='max-val' class='col s6'></div>
+</div>
 <li>Create a guestlist</li>
 <li>Choose a venue</li>
 
@@ -51,6 +57,13 @@
      decimals: 0
    })
   });
+
+  slider.noUiSlider.on('update', function( values, handle ) {
+    $('#min-val').html(values[0]);
+    $('#max-val').html(values[1]);
+  });
+
+
 
   $('.datepicker').pickadate({
     selectMonths: true, // Creates a dropdown to control month

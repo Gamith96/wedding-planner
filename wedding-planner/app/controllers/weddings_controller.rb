@@ -24,6 +24,14 @@ class WeddingsController < ApplicationController
     id = params[:id]
   end
   def create
+    Weddings.create(couple_name: "temp",
+      wedding_date: params[:text],
+      max_budget: 10000,
+      min_budget: 5000,
+      location_id: 1,
+      user_id: 1
+      )
+    redirect_to(:back)
   end
   def destroy
   end
