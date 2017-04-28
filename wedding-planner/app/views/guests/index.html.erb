@@ -1,15 +1,29 @@
-<h2>Hello Guest!</h2>
+<h2>RSVP status!</h2>
 
-All guests so far:<br>
+<!-- if guest RVSP'd true, then display them -->
 <% @guests.each do |guest| %>
-    <%= guest.name %>|
-    <%= link_to 'Show', guest_path(guest) %>|
+    <% if guest.rsvp == true %>
+      All guests that are attending:<br>
+      <%= guest.name %> |
+      <%= link_to 'Show Info', guest_path(guest) %> |
+      <%= link_to 'Edit', edit_guest_path(guest) %> |
+      <%= link_to 'Destroy', guest_path(guest),
+                    method: :delete,
+                    data: { confirm: 'Are you sure?' } %><br>
+    <% end %>
+<% end %>
+
+<!-- if guest RVSP'd false, then display them here -->
+<% @guests.each do |guest| %>
+  <% if guest.rsvp == false %>
+    All guests that are not attending:<br>
+    <%= guest.name %> |
+    <%= link_to 'Show Info', guest_path(guest) %> |
     <%= link_to 'Edit', edit_guest_path(guest) %> |
     <%= link_to 'Destroy', guest_path(guest),
-                  method: :delete,
-                  data: { confirm: 'Are you sure?' } %>
-    <br>
+                method: :delete,
+                data: { confirm: 'Are you sure?' } %><br>
+    <% end %>
   <% end %>
-
 
 <button><a href="/guests/new">Add a new guest for this wedding</a></button>
