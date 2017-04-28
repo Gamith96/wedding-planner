@@ -1,1 +1,13 @@
 <h1>Show locations page</h1>
+
+<% @locations.each do |location|%>
+  <%=@location[:name]%>
+  <!-- <%=@location[:address]%>
+  <%=@location[:url]%> -->
+  <%end%>
+
+<!-- <h1> this is <%= @location[:name]%>'s page'</h1>
+<ul>
+  <li>description: <%= @location[:address]%></li>
+  <li><img style="width:50%; height auto" src="<%=@location[:id]%>"</li>
+</ul> -->
