@@ -1,0 +1,9 @@
+<%= form_for @guest do |f| %>
+  <%= f.label :rsvp %>
+  <%= f.check_box( :rsvp, {}, "yes", "no") %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <%= f.label :email %>
+  <%= f.text_field :email %>
+  <%= f.submit %>
+<% end %>

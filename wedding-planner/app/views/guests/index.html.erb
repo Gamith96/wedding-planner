@@ -1,2 +1,11 @@
-<h1>Hello Guest!</h1>
-<h2><a href="/guests/new">Create a new guest for the wedding</h2>
+<h2>Hello Guest!</h2>
+
+All guests so far:<br>
+<% @guests.each do |guest| %>
+    <%= guest.name %>|
+    <%= link_to 'Show', guest_path(guest) %>|
+    <%= link_to 'Edit', edit_guest_path(guest) %> <br>
+  <% end %>
+
+
+<button><a href="/guests/new">Add a new guest for this wedding</a></button>
