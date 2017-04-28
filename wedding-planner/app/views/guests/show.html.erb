@@ -1,7 +1,8 @@
-<h2>Here are the list of guests:</h2>
+<h2>Guest info:</h2>
 <% @guests.each do |guest| %>
   <%= @guest[:name] %>
   <%= @guest[:email] %>
   <%= @guest[:rsvp] %>
+  <%= @guest[:wedding_id] %>
 <% end %>
-<%= link_to "Back", users_path %>
+<%= link_to "Back" %>
