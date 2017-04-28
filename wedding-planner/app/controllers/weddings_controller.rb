@@ -21,7 +21,7 @@ class WeddingsController < ApplicationController
     @body = response.body
   end
   def show
-    id = params[:id]
+    @wedding = Wedding.find_by(id: params[:id])
   end
   def create
     Weddings.create(couple_name: "temp",
