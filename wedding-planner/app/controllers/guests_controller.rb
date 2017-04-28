@@ -11,7 +11,6 @@ class GuestsController < ApplicationController
   end
   def create
     @guest = Guest.new(params[:name], params[:email], params[:rsvp])
-
     if @guest.save
         redirect_to '/guests/show', alert: "User created successfully."
     else
