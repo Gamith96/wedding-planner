@@ -6,4 +6,4 @@ Location.create(photo_img: " ", url: "thewilliamvale.com", address: "111 N 12th 
 Location.create(photo_img: " ", url: "1hotels.com/brooklyn-bridge", address: "60 Furman St Brooklyn, NY, 11201", name: "1 Hotel Brooklyn Bridge")
 Location.create(photo_img: " ", url: "hotellejolie.com", address: "235 Meeker Ave, Brooklyn, NY 11211", name: "Hotel Le Jolie")
 Location.create(photo_img: " ", url: "ludlowhotel.com", address: "180 Ludlow St, New York NY 10002", name: "The Ludlow New York City")
-Wedding.create(couple_name: "Smith-Jones", wedding_date: '20170101', max_budget: 10000, min_budget: 1000, user_id: 3)
+#Wedding.create(couple_name: "Smith-Jones", wedding_date: '20170101', max_budget: 10000, min_budget: 1000, user_id: 3)
