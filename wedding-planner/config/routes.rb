@@ -8,8 +8,5 @@ Rails.application.routes.draw do
 
   resources :guests
   root to: "guests#index"
-
   resources :locations
-  root to: "locations#index"
-
 end

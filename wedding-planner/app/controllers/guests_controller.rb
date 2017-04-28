@@ -10,12 +10,16 @@ class GuestsController < ApplicationController
     @guest = Guest.new
   end
   def create
-    @guest = Guest.new(params[:name], params[:email], params[:rsvp])
-
+    @guest = Guest.new(guest_params)
     if @guest.save
-        redirect_to '/guests/show', alert: "User created successfully."
+        redirect_to guest_index_path
     else
-        redirect_to 'guests/new', alert: "Error creating user."
+        render "new"
     end
   end
+  def guest_params
+      params.require(:guest).permit(:name, :email)
+  end
+
+
 end
