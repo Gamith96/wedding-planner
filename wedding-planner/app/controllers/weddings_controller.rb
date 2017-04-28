@@ -8,6 +8,8 @@ class WeddingsController < ApplicationController
       require 'uri'
       require 'net/http'
 
+      @weddings = Wedding.where(:user_id => current_user.id)
+
       url = URI("https://api.yelp.com/v3/businesses/search?term=hotel&location=11211&radius=10000")
 
       http = Net::HTTP.new(url.host, url.port)
@@ -37,6 +39,8 @@ class WeddingsController < ApplicationController
     redirect_to(:back)
   end
   def destroy
+    Wedding.destroy(params[:id])
+    redirect_to "/weddings"
   end
 
 end

@@ -1,6 +1,9 @@
 <div id='container'>
 
 <h2><%= @wedding[:couple_name] %></h2>
+<p>
+<%= link_to 'Delete Wedding', @wedding, method: :delete %>
+</p>
 
 <h3><%= @wedding[:wedding_date].strftime("Printed on %m/%d/%Y") %></h3>
 
@@ -27,6 +30,8 @@ at
   <button>Submit</button>
 
 </form>
+
+
 
 
 <a href="/weddings">Back</a>
