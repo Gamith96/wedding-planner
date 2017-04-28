@@ -1,10 +1,13 @@
 class UsersController < ApplicationController
   def index
-    @users = User.all
+    if user_signed_in?
+    else
+      redirect_to new_user_session_path
+    end
   end
 
-  def create
-    #code
+  def new
+    @user = User.new
   end
   def destroy
   end
