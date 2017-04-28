@@ -7,6 +7,5 @@ Rails.application.routes.draw do
   root to: "users#index"
 
   resources :guests
-  root to: "guests#index"
   resources :locations
 end

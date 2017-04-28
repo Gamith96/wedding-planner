@@ -1,7 +1,7 @@
-<h2>Here are the list of guests:</h2>
-<% @guests.each do |guest| %>
-  <%= @guest[:name] %>
-  <%= @guest[:email] %>
-  <%= @guest[:rsvp] %>
-<% end %>
-<%= link_to "Back", users_path %>
+<h2>Guest info:</h2>
+  Guest ID: <%= @guest[:id] %><br>
+  Guest Name: <%= @guest[:name] %> <br>
+  Guest Email: <%= @guest[:email] %> <br>
+  RSVP: <%= @guest[:rsvp] %><br>
+  For Wedding ID:<%= @guest[:wedding_id] %><br>
+<button><a href="/guests/new">Add a new guest for this wedding</a></button>
