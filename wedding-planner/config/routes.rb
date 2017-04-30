@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
   resources :guests
   resources :locations
-  post 'twilio/voice' => 'twilio#voice'
-  post 'notifications/notify' => 'notifications#notify'
+  resources :weather
+  # post 'twilio/voice' => 'twilio#voice'
+  # post 'notifications/notify' => 'notifications#notify'
 end
