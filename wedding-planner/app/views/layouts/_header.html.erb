@@ -5,13 +5,23 @@
     <li><a href="/weddings">Weddings</a></li>
     <li><a href="/locations">Locations</a></li>
     <li><a href="/guests">Guests</a></li>
+
+    <li style="color: blue; flow: right; padding-left: 55%; padding-right: 1%;">
+      <%= current_user.name %>
+    </li>
     <li>
-    <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
+      <%= link_to('My Account', edit_user_registration_path) %>
+    </li>
+    <li>
+      <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
     </li>
   <% else %>
-
     <li>
-    <%= link_to('Login', new_user_session_path)  %>
+      <%= link_to('Login', new_user_session_path)  %>
+
+    </li>
+    <li>
+      <%= link_to('Sign up', new_user_registration_path)  %>
     </li>
   <% end %>
 </ul>
