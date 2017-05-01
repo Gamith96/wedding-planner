@@ -58,6 +58,9 @@ gem 'yelp'
 
 gem 'materialize-sass'
 
+gem 'omniauth-facebook'
+
 gem 'twilio-ruby'
 
 gem 'httparty'
+
