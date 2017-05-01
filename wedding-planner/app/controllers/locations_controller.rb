@@ -6,6 +6,8 @@ class LocationsController < ApplicationController
     puts "this is the params: #{params}"
     @location = Location.find(params[:id])
 
+
+
   end
 
   # def create

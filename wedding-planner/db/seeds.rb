@@ -1,4 +1,4 @@
-Location.create(photo_img: "app/assets/images/locations/kleinfeldhotelblocks.png ", url: "kleinfeldhotelblocks.com", address: "110 W 20th St New York, NY 10011", name: "Kleinfeld Hotel Blocks")
+Location.create(photo_img: "images/locations/kleinfeldhotelblocks.png ", url: "kleinfeldhotelblocks.com", address: "110 W 20th St New York, NY 10011", name: "Kleinfeld Hotel Blocks")
 Location.create(photo_img: " ", url: " http://hamptoninn3.hilton.com/en/hotels/new-york/hampton-inn-brooklyn-downtown-NYCBOHX", address: "125 Flatbush Ave Extension, Downtown Brooklyn, NY 11201", name: "Hampton Inn Brooklyn Downtown")
 Location.create(photo_img: " ", url: "henrynormanhotel.com", address: "251 N Henry St, Greenpoint, NY 11222", name: "Henry Norman Hotel")
 Location.create(photo_img: " ", url: "casablancahotel.com", address: "147 W 43rd St, New York, NY 10036", name: "Casablanca Hotel")
