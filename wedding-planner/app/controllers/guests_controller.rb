@@ -13,7 +13,6 @@ class GuestsController < ApplicationController
   def create
     @guest = Guest.new(guest_params)
     if @guest.save
-<<<<<<< HEAD
       GuestMailer.guest_rsvp(@guest[:id], @guest[:email]).deliver
       #GuestMailer.guest_welcome(guest_params[:email]).deliver
         redirect_to "/guests"
