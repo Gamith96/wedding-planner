@@ -1,5 +1,5 @@
 class GuestMailer < ApplicationMailer
-  default from: "lizzeh@gmail.com"
+  default from: "WeddingPlannerNotifier@gmail.com"
 
   def guest_welcome(email)
     @email = email
