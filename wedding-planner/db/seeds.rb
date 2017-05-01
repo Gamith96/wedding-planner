@@ -3,6 +3,7 @@ Location.create(photo_img: " ", url: " http://hamptoninn3.hilton.com/en/hotels/n
 Location.create(photo_img: " ", url: "henrynormanhotel.com", address: "251 N Henry St, Greenpoint, NY 11222", name: "Henry Norman Hotel")
 Location.create(photo_img: " ", url: "casablancahotel.com", address: "147 W 43rd St, New York, NY 10036", name: "casablanca-hotel-new-york-2")
 Location.create(photo_img: " ", url: "thewilliamvale.com", address: "111 N 12th St, Williamsburg, Brooklyn, NY 11249", name: "The William Vale Hotel")
+
 Location.create(photo_img: " ", url: "1hotels.com/brooklyn-bridge", address: "60 Furman St Brooklyn, NY, 11201", name: "1-hotel-brooklyn-bridge-brooklyn")
 Location.create(photo_img: " ", url: "hotellejolie.com", address: "235 Meeker Ave, Brooklyn, NY 11211", name: "hotel-le-jolie-brooklyn")
 Location.create(photo_img: " ", url: "ludlowhotel.com", address: "180 Ludlow St, New York NY 10002", name: "the-ludlow-new-york-city-new-york")
