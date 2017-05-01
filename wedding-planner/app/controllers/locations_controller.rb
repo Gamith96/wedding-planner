@@ -11,7 +11,7 @@ class LocationsController < ApplicationController
     require 'uri'
     require 'net/http'
 
-    url = URI("https://api.yelp.com/v3/businesses/greenpoint-lodge-brooklyn/reviews")
+    url = URI("https://api.yelp.com/v3/businesses/"+@location[:name]+"/reviews")
 
     http = Net::HTTP.new(url.host, url.port)
     http.use_ssl = true
