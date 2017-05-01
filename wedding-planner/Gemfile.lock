@@ -59,21 +59,8 @@ GEM
       warden (~> 1.2.3)
     erubis (2.7.0)
     execjs (2.7.0)
-<<<<<<< HEAD
-=======
-
-    faraday (0.11.0)
+    faraday (0.9.2)
       multipart-post (>= 1.2, < 3)
-    ffi (1.9.18)
-    globalid (0.4.0)
-      activesupport (>= 4.2.0)
-    hashie (3.5.5)
->>>>>>> 8f444ee34149c6c71618f6befb09bc055f2cf5e4
-    faraday (0.12.1)
-      multipart-post (>= 1.2, < 3)
-    faraday_middleware (0.11.0.1)
-      faraday (>= 0.7.4, < 1.0)
-
     ffi (1.9.18)
     globalid (0.4.0)
       activesupport (>= 4.2.0)
@@ -94,7 +81,7 @@ GEM
       rb-inotify (~> 0.9, >= 0.9.7)
     loofah (2.0.3)
       nokogiri (>= 1.5.9)
-    mail (2.6.4)
+    mail (2.6.5)
       mime-types (>= 1.16, < 4)
     materialize-sass (0.98.2)
       sass (~> 3.3)
@@ -106,6 +93,7 @@ GEM
     minitest (5.10.1)
     multi_json (1.12.1)
     multi_xml (0.6.0)
+    multipart-post (2.0.0)
     nio4r (2.0.0)
     nokogiri (1.7.1)
       mini_portile2 (~> 2.1.0)
@@ -228,4 +216,4 @@ DEPENDENCIES
   web-console (>= 3.3.0)
 
 BUNDLED WITH
-   1.14.6
+   1.14.5
