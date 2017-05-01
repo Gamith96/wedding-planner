@@ -57,3 +57,5 @@ gem 'devise'
 gem 'materialize-sass'
 
 gem 'twilio-ruby'
+
+gem 'httparty'
