@@ -7,14 +7,16 @@ class GuestsController < ApplicationController
     @guest = Guest.find(params[:id])
   end
   def new
+    @guests = Guest.all
     @guest = Guest.new
   end
   def create
     @guest = Guest.new(guest_params)
     if @guest.save
-        redirect_to "/guests"
+      GuestMailer.guest_welcome(guest_params[:email]).deliver
+        redirect_to(:back)
     else
-        render "new"
+        redirect_to(:back)
     end
   end
   def edit
