@@ -54,6 +54,8 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'devise'
 
+gem 'yelp'
+
 gem 'materialize-sass'
 
 gem 'twilio-ruby'
