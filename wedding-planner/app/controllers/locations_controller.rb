@@ -29,8 +29,9 @@ class LocationsController < ApplicationController
   end
 
   def create
-      if @location.save
-        redirect_to location_index_path
+      @location= Location.new
+      if @location.save(location_parmas[:name])
+        redirect_to (:back)
       else
         render "show"
       end
