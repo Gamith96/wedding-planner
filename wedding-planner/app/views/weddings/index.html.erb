@@ -35,33 +35,6 @@
 <ul id='cards' class='row'>
 
 
-
-<!--
-possible other location card layout
-
-<% @parsedData["businesses"].sample(15).each do |hi| %>
-<li class='col s6 m4 l3' style='opacity:0'>
-<div class='card small clearfix'>
-<div class="card-image waves-effect waves-block waves-light">
-      <img class='activator' style='max-height:100px' src="<%= hi["image_url"] %>">
-    </div>
-    <div class="card-content">
-      <span class="card-title activator grey-text text-darken-4"><%= hi["name"].html_safe %> <i class="material-icons right">more_vert</i></span>
-    </div>
-    <div class="card-action">
-              <a href='<%= hi["url"] %>'>Yelp link</a>
-            </div>
-    <div class="card-reveal">
-      <span class="card-title grey-text text-darken-4"><%= hi["name"].html_safe %> <i class="material-icons right">close</i></span>
-      <p><%= hi["price"] %><br>
-              <%= hi["location"]["city"] %>, <%= hi["location"]["state"] %></p>
-    </div>
-          </div>
-</li>
-<% end %>
--->
-
-
 <% @parsedData["businesses"].sample(15).each do |hi| %>
 <li class='col s6 m4 l3' style='opacity:0'>
 <div class='card small clearfix' yelp-id='<%= hi["id"]%>'>
@@ -74,7 +47,8 @@ possible other location card layout
               <%= hi["location"]["city"] %>, <%= hi["location"]["state"] %></p>
             </div>
             <div class="card-action">
-              <a href='<%= hi["url"] %>'>Yelp link</a>
+              <a class='hotel-choose'>Choose</a>
+              <a href='<%= hi["url"] %>'>Yelp</a>
             </div>
 
           </div>
@@ -89,12 +63,12 @@ possible other location card layout
 <script>
   var slider = document.getElementById('test5');
   noUiSlider.create(slider, {
-   start: [5000, 7000],
+   start: [1, 5],
    connect: true,
-   step: 1000,
+   step: 1,
    range: {
      'min': 0,
-     'max': 20000
+     'max': 5
    },
    format: wNumb({
      decimals: 0
@@ -114,10 +88,18 @@ possible other location card layout
   });
 
   $(function(){
-    $('.card').parent().on('click', function(){
-      $('#cards').children().not(this).fadeOut()
+    $(".hotel-choose").hover(function() {
+        $(this).css('cursor','pointer');
+    }, function() {
+        $(this).css('cursor','auto');
+    });
+
+    $('.hotel-choose').on('click', function(){
+      $workingObject = $(this).parent().parent().parent()
+      $('#cards').children().not($workingObject).fadeOut()
       $('#submit-btn').show()
-      $('#yelp_id').val($($(this).children()[0]).attr('yelp-id'))
+      $('#yelp_id').val($($($workingObject).children()[0]).attr('yelp-id'))
+      $(this).hide()
     })
 
 

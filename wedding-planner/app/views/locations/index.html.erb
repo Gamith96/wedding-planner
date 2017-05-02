@@ -1,11 +1,15 @@
+
 <h1>Locations index page</h1>
+<button><a href="/weddings">Back</a></button>  <button><a href="/locations/new">Add a Location</a></button>
+
 <div>
   <% @locations.each do |location| %>
     <li>
       <a href="/locations/<%=location[:id]%>"><%=location[:name]%></a>
-    </li>
+          </li>
+          <button><a href="<%= link_to 'Delete', locations_path(location),
+                      method: :delete,
+                      data: { confirm: 'Are you sure?' } %></a></button>
   <% end %>
+
 </div>
-
-
-<a href="/weddings">Back</a>
