@@ -47,7 +47,8 @@
               <%= hi["location"]["city"] %>, <%= hi["location"]["state"] %></p>
             </div>
             <div class="card-action">
-              <a href='<%= hi["url"] %>'>Yelp link</a>
+              <a class='hotel-choose'>Choose</a>
+              <a href='<%= hi["url"] %>'>Yelp</a>
             </div>
 
           </div>
@@ -87,10 +88,18 @@
   });
 
   $(function(){
-    $('.card').parent().on('click', function(){
-      $('#cards').children().not(this).fadeOut()
+    $(".hotel-choose").hover(function() {
+        $(this).css('cursor','pointer');
+    }, function() {
+        $(this).css('cursor','auto');
+    });
+
+    $('.hotel-choose').on('click', function(){
+      $workingObject = $(this).parent().parent().parent()
+      $('#cards').children().not($workingObject).fadeOut()
       $('#submit-btn').show()
-      $('#yelp_id').val($($(this).children()[0]).attr('yelp-id'))
+      $('#yelp_id').val($($($workingObject).children()[0]).attr('yelp-id'))
+      $(this).hide()
     })
 
 

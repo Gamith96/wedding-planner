@@ -1,50 +1,43 @@
-<div id='container'>
+<div id='container'  class='center-align'>
+
+
 
 <h2><%= @wedding[:couple_name] %></h2>
-<p>
-<%= link_to 'Delete Wedding', @wedding, method: :delete %>
-</p>
 
-<h3><%= @wedding[:wedding_date].strftime("Printed on %m/%d/%Y") %></h3>
+
+<h1><%= @wedding[:wedding_date].strftime("%m/%d/%Y") %></h1>
 
 at
 
-<h4><%= @wedding.location[:name] %></h4>
+<h1><%= @wedding.location[:name] %></h1>
 
 
-
+<h2>Guests invited:</h2>
 <% @wedding.guests.each do |guest| %>
 <%= guest[:name] %> - <a href='mailto:<%= guest[:email] %>'><%= guest[:email] %></a> - <%= link_to 'Remove Guest', guest, method: :delete %>
 <br>
   <% end %>
 
 
-
+ <div class="row">
+        <div class="col s12 m6 offset-m3">
+<div class='card' style='padding:20px'>
 <h3>Add a Guest</h3>
 
 <%= form_for Guest.new do |f| %>
   <input name="guest[wedding_id]" value="<%=@wedding[:id]%>" type="hidden">
-  <%= f.label :rsvp %>
-  <%= f.check_box( :rsvp, {}, "true", "false") %>
   <%= f.label :name %>
   <%= f.text_field :name %>
   <%= f.label :email %>
   <%= f.text_field :email %>
     <%= f.submit %>
   <% end %>
+</div>
+</div></div>
 
-
-<!--
-<form action='/guests' method='POST'>
-  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
-  add a user: <br>
-  Name<input name='name'><br>
-  Email<input name='email'><br>
-  <input name='wedding_id' type="hidden" value="<%=@wedding[:id]%>">
-  <button>Submit</button>
-
-</form> -->
-
+<p>
+<%= link_to 'Delete Wedding', @wedding, method: :delete %>
+</p>
 
 
 
