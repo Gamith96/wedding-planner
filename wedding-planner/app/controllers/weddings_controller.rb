@@ -1,5 +1,5 @@
 class WeddingsController < ApplicationController
-  before_action :authenticate_user!
+
 
   def index
     # if the user has a wedding planned
