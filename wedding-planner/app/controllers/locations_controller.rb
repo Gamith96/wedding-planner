@@ -1,9 +1,6 @@
 class LocationsController < ApplicationController
   def index
     @locations = Location.all
-
-
-
   end
   def show
     puts "this is the params: #{params}"
@@ -25,17 +22,18 @@ class LocationsController < ApplicationController
     response = http.request(request)
     puts response.body
     @body = response.body
-
-
+  end
+  def new
+    @locatoins = Location.all
+    @location = Location.new
   end
 
-  # def create
-  #   @location = Locations.new(location_params)
-  #     if @location.save
-  #       redirect_to location_index_path
-  #     else
-  #       render "show"
-  #     end
-  #   end
+  def create
+      if @location.save
+        redirect_to location_index_path
+      else
+        render "show"
+      end
+    end
 
 end
