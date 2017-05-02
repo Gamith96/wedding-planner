@@ -1,29 +1,36 @@
+<div class="container">
 <h2>RSVP status</h2>
-
 <!-- if guest RVSP'd true, then display them -->
-Attending:<br>
-<% @guests.each do |guest| %>
+  <div class="collection">
+  <h5>Attending:</h5>
+  <br>
+  <% @guests.each do |guest| %>
     <% if guest.rsvp == true %>
       <%= guest.name %> |
       <%= link_to 'Show Info', guest_path(guest) %> |
       <%= link_to 'Edit', edit_guest_path(guest) %> |
-      <%= link_to 'Destroy', guest_path(guest),
+      <%= link_to 'Remove', guest_path(guest),
                     method: :delete,
                     data: { confirm: 'Are you sure?' } %><br>
     <% end %>
-<% end %>
+  <% end %>
+  </div>
 <br>
 <!-- if guest RVSP'd false, then display them here -->
-Not attending:<br>
-<% @guests.each do |guest| %>
+<div class="collection">
+  <h5>Not attending:</h5>
+  <br>
+  <% @guests.each do |guest| %>
   <% if guest.rsvp == false %>
     <%= guest.name %> |
     <%= link_to 'Show Info', guest_path(guest) %> |
     <%= link_to 'Edit', edit_guest_path(guest) %> |
-    <%= link_to 'Destroy', guest_path(guest),
+    <%= link_to 'Remove', guest_path(guest),
                 method: :delete,
                 data: { confirm: 'Are you sure?' } %><br>
     <% end %>
   <% end %>
+</div>
 
-<button><a href="/guests/new">Add a new guest for this wedding</a></button>
+  <button><a href="/guests/new">Add a new guest for this wedding</a></button>
+    </div>
