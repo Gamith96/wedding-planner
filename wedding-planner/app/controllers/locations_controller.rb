@@ -30,12 +30,20 @@ puts @location[:url]
   end
 
   def create
-      @location= Location.new
-      if @location.save(location_parmas[:name])
+      @location= Location.new(location_params)
+      if @location.save
         redirect_to (:back)
       else
         render "show"
       end
-    end
+  end
+  def destroy
+    @location= Location.find(params[:id])
+    @location.destroy
+    redirect_to locations_path
+  end
+  def location_params
+        params.require(:location).permit(:id, :name, :address, :price)
+  end
 
 end
