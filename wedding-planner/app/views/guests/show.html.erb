@@ -4,4 +4,6 @@
   Guest Email: <%= @guest[:email] %> <br>
   RSVP: <%= @guest[:rsvp] %><br>
   For Wedding ID:<%= @guest[:wedding_id] %><br>
+
+<button><a href="/guests/<%=@guest[:id]%>/edit">Edit guest for this wedding</a></button>  
 <button><a href="/guests/new">Add a new guest for this wedding</a></button>
