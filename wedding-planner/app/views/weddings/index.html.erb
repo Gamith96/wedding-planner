@@ -8,22 +8,21 @@
 
 <form action='/weddings' method='POST'>
 <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
-<ul>
-<li>Couple's names</li>
+
+<h3>Couple's names</h3>
 <input type="text" name="couple_name">
-<li>Pick a date</li>
+<h3>Pick a date</h3>
  <input type="date" name="date" class="datepicker">
-<li>Set a budget</li>
+<h3>Set a budget</h3>
+
 <div class='row'>
 <div id='test5'></div>
 </div>
-<div class='row'>
-  <input disabled id='min-val' class='col s6'>
-  <input disabled id='max-val' class='col s6'>
 
-</div>
-<li>Create a guestlist</li>
-<li>Choose a venue</li>
+  <input type="hidden" id='min-val' class='col s6'>
+  <input type="hidden" id='max-val' class='col s6'>
+
+
 
 <%
 @parsedData = JSON.parse(@body)
@@ -31,39 +30,14 @@
 
 <h1>Hotels</h1>
 
+<input name='yelp_id' id='yelp_id' type='hidden'>
+
 <ul id='cards' class='row'>
 
 
-
-<!--
-possible other location card layout
-
-<% @parsedData["businesses"].sample(15).each do |hi| %>
+<% @parsedData["businesses"].sample(30).each do |hi| %>
 <li class='col s6 m4 l3' style='opacity:0'>
-<div class='card small clearfix'>
-<div class="card-image waves-effect waves-block waves-light">
-      <img class='activator' style='max-height:100px' src="<%= hi["image_url"] %>">
-    </div>
-    <div class="card-content">
-      <span class="card-title activator grey-text text-darken-4"><%= hi["name"].html_safe %> <i class="material-icons right">more_vert</i></span>
-    </div>
-    <div class="card-action">
-              <a href='<%= hi["url"] %>'>Yelp link</a>
-            </div>
-    <div class="card-reveal">
-      <span class="card-title grey-text text-darken-4"><%= hi["name"].html_safe %> <i class="material-icons right">close</i></span>
-      <p><%= hi["price"] %><br>
-              <%= hi["location"]["city"] %>, <%= hi["location"]["state"] %></p>
-    </div>
-          </div>
-</li>
-<% end %>
--->
-
-
-<% @parsedData["businesses"].sample(15).each do |hi| %>
-<li class='col s6 m4 l3' style='opacity:0'>
-<div class='card small clearfix'>
+<div class='card small clearfix' yelp-price='<%= hi["price"].count("$") %>' yelp-id='<%= hi["id"]%>'>
 <div class='card-image'>
               <img src="<%= hi["image_url"] %>">
               <span class="card-title"><%= hi["name"].html_safe %></span>
@@ -73,7 +47,8 @@ possible other location card layout
               <%= hi["location"]["city"] %>, <%= hi["location"]["state"] %></p>
             </div>
             <div class="card-action">
-              <a href='<%= hi["url"] %>'>Yelp link</a>
+              <a class='hotel-choose'>Choose</a>
+              <a href='<%= hi["url"] %>'>Yelp</a>
             </div>
 
           </div>
@@ -81,19 +56,19 @@ possible other location card layout
 <% end %>
 </ul>
 
-<button class='btn'>Submit</button>
+<button id='submit-btn' class='btn' style='display:none'>Submit</button>
 </form>
 
 
 <script>
   var slider = document.getElementById('test5');
   noUiSlider.create(slider, {
-   start: [1, 5],
+   start: [1, 4],
    connect: true,
    step: 1,
    range: {
      'min': 1,
-     'max': 5
+     'max': 4
    },
    format: wNumb({
      decimals: 0
@@ -103,25 +78,15 @@ possible other location card layout
   slider.noUiSlider.on('update', function( values, handle ) {
     $('#min-val').val(values[0]);
     $('#max-val').val(values[1]);
-    let prices = ""
-    for(i = values[0]; i < values[1]; i++){
-      prices += i + ","
-    }
-    if (prices.length >= 2){
-      prices = prices.slice(0,-1)
-    }
+  });
 
-    $.ajax({
-        url: 'https://api.yelp.com/v3/businesses/search?term=hotel&location=11211&radius=10000&price='+prices,
-        type: 'GET',
-        beforeSend: function (xhr) {
-            xhr.setRequestHeader('Authorization', 'Bearer BBr89v-kCWEA95W-USjvDWpmxT0oNUTU3WOk_AIzlzeXbXi565mLiqaViVUDxN-76M01YnskaIppjUs-ufs2oK6UGQ_aBqgCYwnL7k_3XMVAzEGWzOnQiVwvyt0AWXYx');
-        },
-        success: function (x) {console.log ('success' + x)},
-        error: function (x) {console.log ('fail' + x) },
-      });
-
-
+  slider.noUiSlider.on('slide', function( values, handle ) {
+    $('.card[yelp-price]').each(function(){
+      if($(this).attr('yelp-price')>=values[0] && $(this).attr('yelp-price')<=values[1])
+        $(this).parent().fadeIn()
+      else
+        $(this).parent().fadeOut()
+    })
   });
 
 
@@ -132,6 +97,32 @@ possible other location card layout
   });
 
   $(function(){
+    $(".hotel-choose").hover(function() {
+        $(this).css('cursor','pointer');
+    }, function() {
+        $(this).css('cursor','auto');
+    });
+
+    $('.hotel-choose').on('click', function(){
+      $workingObject = $(this).parent().parent().parent()
+      $('#cards').children().not($workingObject).fadeOut()
+      $('#submit-btn').show()
+      $('#yelp_id').val($($($workingObject).children()[0]).attr('yelp-id'))
+      $(this).text("Remove")
+      $(this).on('click', function(){
+        $workingObject = $(this).parent().parent().parent()
+        $('#cards').children().not($workingObject).fadeIn()
+        $('#submit-btn').hide()
+        $('#yelp_id').val("")
+        $(this).text("Choose")
+      })
+    })
+
+
+
+
+
+
     Materialize.showStaggeredList('#cards')
   })
 </script>

@@ -56,6 +56,10 @@ gem 'devise'
 
 gem 'materialize-sass'
 
+gem 'omniauth-facebook'
+
 gem 'twilio-ruby'
 
 gem 'httparty'
+
+gem 'faraday'
