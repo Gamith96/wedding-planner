@@ -88,12 +88,12 @@ possible other location card layout
 <script>
   var slider = document.getElementById('test5');
   noUiSlider.create(slider, {
-   start: [5000, 7000],
+   start: [1, 5],
    connect: true,
-   step: 1000,
+   step: 1,
    range: {
-     'min': 0,
-     'max': 20000
+     'min': 1,
+     'max': 5
    },
    format: wNumb({
      decimals: 0
@@ -103,6 +103,25 @@ possible other location card layout
   slider.noUiSlider.on('update', function( values, handle ) {
     $('#min-val').val(values[0]);
     $('#max-val').val(values[1]);
+    let prices = ""
+    for(i = values[0]; i < values[1]; i++){
+      prices += i + ","
+    }
+    if (prices.length >= 2){
+      prices = prices.slice(0,-1)
+    }
+
+    $.ajax({
+        url: 'https://api.yelp.com/v3/businesses/search?term=hotel&location=11211&radius=10000&price='+prices,
+        type: 'GET',
+        beforeSend: function (xhr) {
+            xhr.setRequestHeader('Authorization', 'Bearer BBr89v-kCWEA95W-USjvDWpmxT0oNUTU3WOk_AIzlzeXbXi565mLiqaViVUDxN-76M01YnskaIppjUs-ufs2oK6UGQ_aBqgCYwnL7k_3XMVAzEGWzOnQiVwvyt0AWXYx');
+        },
+        success: function (x) {console.log ('success' + x)},
+        error: function (x) {console.log ('fail' + x) },
+      });
+
+
   });
 
 
