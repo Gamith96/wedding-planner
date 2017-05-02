@@ -1,9 +1,6 @@
 class LocationsController < ApplicationController
   def index
     @locations = Location.all
-
-
-
   end
   def show
     puts "this is the params: #{params}"
@@ -13,6 +10,7 @@ class LocationsController < ApplicationController
 
     url = URI("https://api.yelp.com/v3/businesses/"+@location[:name]+"/reviews")
 
+puts @location[:url]
     http = Net::HTTP.new(url.host, url.port)
     http.use_ssl = true
     http.verify_mode = OpenSSL::SSL::VERIFY_NONE
@@ -25,17 +23,26 @@ class LocationsController < ApplicationController
     response = http.request(request)
     puts response.body
     @body = response.body
-
-
+  end
+  def new
+    @locatoins = Location.all
+    @location = Location.new
   end
 
-  # def create
-  #   @location = Locations.new(location_params)
-  #     if @location.save
-  #       redirect_to location_index_path
-  #     else
-  #       render "show"
-  #     end
-  #   end
+  def create
+      @location= Location.new(location_params)
+      if @location.save
+        redirect_to (:back)
+      else
+        render "show"
+      end
+  end
+  def destroy
+    Location.destroy(params[:id])
+    redirect_to "locations"
+  end
+  def location_params
+        params.require(:location).permit(:id, :name, :address, :price)
+  end
 
 end
