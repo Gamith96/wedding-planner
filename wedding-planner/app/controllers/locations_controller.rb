@@ -8,7 +8,7 @@ class LocationsController < ApplicationController
     require 'uri'
     require 'net/http'
 
-    url = URI("https://api.yelp.com/v3/businesses/"+@location[:url]+"/reviews")
+    url = URI("https://api.yelp.com/v3/businesses/"+@location[:name]+"/reviews")
 
 puts @location[:url]
     http = Net::HTTP.new(url.host, url.port)
@@ -38,9 +38,8 @@ puts @location[:url]
       end
   end
   def destroy
-    @location= Location.find(params[:id])
-    @location.destroy
-    redirect_to locations_path
+    Location.destroy(params[:id])
+    redirect_to "locations"
   end
   def location_params
         params.require(:location).permit(:id, :name, :address, :price)
