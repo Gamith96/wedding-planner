@@ -2,9 +2,10 @@ class WeddingsController < ApplicationController
 
 
   def index
-    # if the user has a wedding planned
-      # go to action show/wedding_id
-    # else
+    @wedding = Wedding.find_by(user_id: current_user.id)
+    if not @wedding.nil?
+      redirect_to('/weddings/' + @wedding.id.to_s)
+    else
       require 'uri'
       require 'net/http'
 
@@ -22,6 +23,7 @@ class WeddingsController < ApplicationController
       response = http.request(request)
       puts response.body
       @body = response.body
+    end
   end
   def show
     @wedding = Wedding.find_by(id: params[:id], user_id: current_user.id)
