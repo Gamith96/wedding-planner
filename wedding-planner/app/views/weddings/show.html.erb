@@ -9,18 +9,32 @@
 
 at
 
-<h4><%= @wedding.location[:name] %>
+<h4><%= @wedding.location[:name] %></h4>
 
 
 
 <% @wedding.guests.each do |guest| %>
 <%= guest[:name] %> - <a href='mailto:<%= guest[:email] %>'><%= guest[:email] %></a> - <%= link_to 'Remove Guest', guest, method: :delete %>
-
+<br>
   <% end %>
 
 
 
 <h3>Add a Guest</h3>
+
+<%= form_for Guest.new do |f| %>
+  <input name="guest[wedding_id]" value="<%=@wedding[:id]%>" type="hidden">
+  <%= f.label :rsvp %>
+  <%= f.check_box( :rsvp, {}, "true", "false") %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <%= f.label :email %>
+  <%= f.text_field :email %>
+    <%= f.submit %>
+  <% end %>
+
+
+<!--
 <form action='/guests' method='POST'>
   <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
   add a user: <br>
@@ -29,7 +43,7 @@ at
   <input name='wedding_id' type="hidden" value="<%=@wedding[:id]%>">
   <button>Submit</button>
 
-</form>
+</form> -->
 
 
 

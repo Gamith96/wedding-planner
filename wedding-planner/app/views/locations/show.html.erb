@@ -3,11 +3,25 @@
 
   <%=@location[:name]%><br>
   <%=@location[:address]%><br>
-  <a href = "<%=@location[:url]%>">Visit the Hotels Page</a>
 
+
+<img src="https://maps.googleapis.com/maps/api/streetview?size=400x400&location=<%=@location[:address]%>&key=AIzaSyBO90RXC7toT7FfrQIKwQwxAglaZQJExs4">
+<br>
+
+<%@parsedData = JSON.parse(@body)%>
+<h3>Reviews</h3>
+<ul>
+<% @parsedData["reviews"].each do |review|%>
+<li>
+<%= review["text"] %>
+</li>
+<% end %>
+</ul>
 
 <!-- <h1> this is <%= @location[:name]%>'s page'</h1>
 <ul>
   <li>description: <%= @location[:address]%></li>
   <li><img style="width:50%; height auto" src="<%=@location[:id]%>"</li>
 </ul> -->
+
+<a href="/locations">Back</a>
