@@ -1,11 +1,22 @@
+
 <h1>Locations index page</h1>
+<button><a href="/weddings">Back</a></button>  <button><a href="/locations/new">Add a Location</a></button>
+
 <div>
   <% @locations.each do |location| %>
     <li>
       <a href="/locations/<%=location[:id]%>"><%=location[:name]%></a>
     </li>
   <% end %>
+
+  <!-- <form action='/locations' method='POST'>
+  add a Location: <br>
+  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+  Photo_img<input name='photo_img'><br>
+  URL<input name='url'><br>
+  Address<input name='address'><br>
+  Name<input name='name'><br>
+  <button>Submit</button>
+</form> -->
+
 </div>
-
-
-<a href="/weddings">Back</a>

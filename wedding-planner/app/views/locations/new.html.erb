@@ -1,0 +1,15 @@
+<%= form_for @location do |f| %>
+  <%= f.label :photo_img %>
+  <%= f.text_field :photo_img %>
+  <%= f.label :url %>
+  <%= f.text_field :url %>
+  <%= f.label :address %>
+  <%= f.text_field :address %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <%= f.label :price %>
+  <%= f.text_field :price %>
+  <%= f.label :max_capacity %>
+  <%= f.text_field :max_capacity %>
+    <%= f.submit %>
+  <% end %>

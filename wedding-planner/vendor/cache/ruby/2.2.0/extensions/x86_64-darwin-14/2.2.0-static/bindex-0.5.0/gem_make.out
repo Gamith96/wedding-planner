@@ -1,0 +1,11 @@
+/Users/adamroberts/.rbenv/versions/2.2.3/bin/ruby -r ./siteconf20170501-24896-1029omg.rb extconf.rb
+creating Makefile
+
+make "DESTDIR=" clean
+
+make "DESTDIR="
+compiling cruby.c
+linking shared-object bindex/cruby.bundle
+
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 cruby.bundle ./.gem.20170501-24896-1xcdate/bindex

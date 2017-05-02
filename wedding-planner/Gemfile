@@ -62,3 +62,4 @@ gem 'twilio-ruby'
 
 gem 'httparty'
 
+gem 'faraday'
