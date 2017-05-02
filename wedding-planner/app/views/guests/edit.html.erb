@@ -1,9 +1,8 @@
+<h4>Hello <%= @guest[:name] %>! Can you come to the wedding?</h4>
+
 <%= form_for @guest do |f| %>
-  <%= f.label :rsvp %>
   <%= f.check_box( :rsvp, {}, "true", "false") %>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
-  <%= f.label :email %>
-  <%= f.text_field :email %>
+  <%= f.label :rsvp %>
+  <br><br>
   <%= f.submit %>
 <% end %>
