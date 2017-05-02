@@ -1,9 +1,18 @@
-<h2>Guest info:</h2>
-  Guest ID: <%= @guest[:id] %><br>
-  Guest Name: <%= @guest[:name] %> <br>
-  Guest Email: <%= @guest[:email] %> <br>
-  RSVP: <%= @guest[:rsvp] %><br>
-  For Wedding ID:<%= @guest[:wedding_id] %><br>
+<h2>Hello <%= @guest[:name] %>!</h2>
+<!-- Guest ID: <%= @guest[:id] %><br> -->
+<!-- Guest Name: <%= @guest[:name] %> <br> -->
+Your Email address: <%= @guest[:email] %> <br>
+Your RSVP status: <%= @guest[:rsvp] %><br>
 
-<button><a href="/guests/<%=@guest[:id]%>/edit">Edit guest for this wedding</a></button>  
-<button><a href="/guests/new">Add a new guest for this wedding</a></button>
+Details For wedding you're attending:
+ID: <%= @guest[:wedding_id] %><br>
+Wedding Name: <%= @wedding[:couple_name] %><br>
+Wedding Date: <%= @wedding[:wedding_date].strftime("%m/%d/%Y") %><br>
+
+Wedding Location: <%= @location.address %><br>
+The current weather in <%= @zip %> is <%= @response["main"]["temp"].to_f.ceil %> &#8457;
+with <%= @response["weather"][0]["description"] %>
+<img src="http://openweathermap.org/img/w/<%= @response["weather"][0]["icon"] %>.png">
+<br>
+<button><a href="/guests/<%=@guest[:id]%>/edit">Edit RSVP</a></button>
+<!-- <button><a href="/guests/new">Add a New Guest</a></button> -->

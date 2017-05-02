@@ -1,5 +1,4 @@
 <%# Get location from search %>
 The current weather in <%= @location %> is <%= @response["main"]["temp"].to_f.ceil %> &#8457;
 with <%= @response["weather"][0]["description"] %>
-
 <img src="http://openweathermap.org/img/w/<%= @response["weather"][0]["icon"] %>.png">
