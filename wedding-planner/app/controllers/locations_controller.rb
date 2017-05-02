@@ -8,7 +8,7 @@ class LocationsController < ApplicationController
     require 'uri'
     require 'net/http'
 
-    url = URI("https://api.yelp.com/v3/businesses/"+@location[:name]+"/reviews")
+    url = URI("https://api.yelp.com/v3/businesses/"+@location[:url]+"/reviews")
 
     http = Net::HTTP.new(url.host, url.port)
     http.use_ssl = true
@@ -29,12 +29,15 @@ class LocationsController < ApplicationController
   end
 
   def create
-      @location= Location.new
-      if @location.save(location_parmas[:name])
+      @location= Location.new(location_params)
+      if @location.save
         redirect_to (:back)
       else
         render "show"
       end
+    end
+    def location_params
+        params.require(:location).permit(:id, :name, :address, :price)
     end
 
 end
