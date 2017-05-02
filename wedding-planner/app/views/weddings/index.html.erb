@@ -8,12 +8,13 @@
 
 <form action='/weddings' method='POST'>
 <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
-<ul>
-<li>Couple's names</li>
+
+<h3>Couple's names</h3>
 <input type="text" name="couple_name">
-<li>Pick a date</li>
+<h3>Pick a date</h3>
  <input type="date" name="date" class="datepicker">
-<li>Set a budget</li>
+<h3>Set a budget</h3>
+
 <div class='row'>
 <div id='test5'></div>
 </div>
@@ -22,14 +23,14 @@
   <input disabled id='max-val' class='col s6'>
 
 </div>
-<li>Create a guestlist</li>
-<li>Choose a venue</li>
 
 <%
 @parsedData = JSON.parse(@body)
 %>
 
 <h1>Hotels</h1>
+
+<input name='yelp_id' id='yelp_id' type='hidden'>
 
 <ul id='cards' class='row'>
 
@@ -63,7 +64,7 @@ possible other location card layout
 
 <% @parsedData["businesses"].sample(15).each do |hi| %>
 <li class='col s6 m4 l3' style='opacity:0'>
-<div class='card small clearfix'>
+<div class='card small clearfix' yelp-id='<%= hi["id"]%>'>
 <div class='card-image'>
               <img src="<%= hi["image_url"] %>">
               <span class="card-title"><%= hi["name"].html_safe %></span>
@@ -81,7 +82,7 @@ possible other location card layout
 <% end %>
 </ul>
 
-<button class='btn'>Submit</button>
+<button id='submit-btn' class='btn' style='display:none'>Submit</button>
 </form>
 
 
@@ -113,6 +114,11 @@ possible other location card layout
   });
 
   $(function(){
+    $('.card').parent().on('click', function(){
+      $('#cards').children().not(this).fadeOut()
+      $('#submit-btn').show()
+      $('#yelp_id').val($($(this).children()[0]).attr('yelp-id'))
+    })
 
 
 
