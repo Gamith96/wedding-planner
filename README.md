@@ -2,32 +2,34 @@
 ## Ben, Artur, Adam, Liz
 
 
-![project3](http://i.imgur.com/ZSJMXns.png)
-
+![project3](https://i.imgur.com/ZSJMXns.png)
 
 Our wedding planner is a full-stack application utilizing Ruby on Rails with Posgresql database.
 
 ERD diagram
 
-![ERD](http://i.imgur.com/5CafcEP.png)
+![ERD](https://i.imgur.com/5CafcEP.png)
 
 Wireframe drawings
 
-![Wireframe](http://i.imgur.com/YPn7W5L.jpg)
+![Wireframe](https://i.imgur.com/YPn7W5L.jpg)
 
-![Wireframe2](http://i.imgur.com/LZgKjkL.jpg)
+![Wireframe2](https://i.imgur.com/LZgKjkL.jpg)
 
 Technlologies used:
 
-User authentication with Devise and OAuth for Facebook authentication option (gem)
+User authentication with Devise or OAuth for Facebook (gem)
 
 HTTParty for access to location weather (gem)
 
-Activemailer for notification of user registration, password resets, and for guest notification 
+Yelp Fusion API for hotel recommendations
+
+Activemailer for notification of user registration, password resets, and for guest notifications 
 
 Materiaize-sass for user interface and design
 
-We tried to integrate Twilio for SMS
+Twilio for SMS notification
+
 
 #### Unsolved problems
 Learning git - we were able to all make it work for us and share our code, but we'd like to practice more
