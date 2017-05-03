@@ -1,8 +1,15 @@
-<h4>Hello <%= @guest[:name] %>! Can you come to the wedding?</h4>
-
-<%= form_for @guest do |f| %>
-  <%= f.check_box( :rsvp, {}, "true", "false") %>
-  <%= f.label :rsvp %>
-  <br><br>
-  <%= f.submit %>
-<% end %>
+<div class="container" class="center-align">
+  <h1>Hello <%= @guest[:name] %>!</h1>
+  <h5>Can you attend the wedding for <%= @wedding[:couple_name] %>?</h5>
+    <div class="row">
+      <div class="col s12 m10">
+        <div class='card' style='padding:20px'>
+        <%= form_for @guest do |f| %>
+          <%= f.check_box( :rsvp, {}, "true", "false")  %>
+          <%= f.label :rsvp %>
+          <br><br>
+          <%= f.submit "Update RSVP" %>
+        <% end %>
+        </div>
+      </div>
+    </div>

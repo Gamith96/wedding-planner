@@ -1,4 +1,4 @@
-/Users/adamroberts/.rbenv/versions/2.2.3/bin/ruby -r ./siteconf20170501-24896-18aivdh.rb extconf.rb
+/Users/adamroberts/.rbenv/versions/2.2.3/bin/ruby -r ./siteconf20170503-93856-15l1hlb.rb extconf.rb
 checking for ffi.h... no
 checking for ffi.h in /usr/local/include,/usr/include/ffi... yes
 checking for ffi_call() in -lffi... yes
@@ -54,4 +54,4 @@ compiling Variadic.c
 linking shared-object ffi_c.bundle
 
 make "DESTDIR=" install
-/usr/bin/install -c -m 0755 ffi_c.bundle ./.gem.20170501-24896-ji7e2r
+/usr/bin/install -c -m 0755 ffi_c.bundle ./.gem.20170503-93856-1yvmvbk
