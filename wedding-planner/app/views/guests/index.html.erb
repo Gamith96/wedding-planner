@@ -1,36 +1,38 @@
-<div class="container">
-<h2>RSVP status</h2>
-<!-- if guest RVSP'd true, then display them -->
-  <div class="collection">
-  <h5>Attending:</h5>
-  <br>
-  <% @guests.each do |guest| %>
-    <% if guest.rsvp == true %>
-      <%= guest.name %> |
-      <%= link_to 'Show Info', guest_path(guest) %> |
-      <%= link_to 'Edit', edit_guest_path(guest) %> |
-      <%= link_to 'Remove', guest_path(guest),
-                    method: :delete,
-                    data: { confirm: 'Are you sure?' } %><br>
-    <% end %>
-  <% end %>
-  </div>
-<br>
-<!-- if guest RVSP'd false, then display them here -->
-<div class="collection">
-  <h5>Not attending:</h5>
-  <br>
-  <% @guests.each do |guest| %>
-  <% if guest.rsvp == false %>
-    <%= guest.name %> |
-    <%= link_to 'Show Info', guest_path(guest) %> |
-    <%= link_to 'Edit', edit_guest_path(guest) %> |
-    <%= link_to 'Remove', guest_path(guest),
-                method: :delete,
-                data: { confirm: 'Are you sure?' } %><br>
-    <% end %>
-  <% end %>
-</div>
+<div class="container" class="center-align">
+  <h1>RSVP status</h1>
 
-  <button><a href="/guests/new">Add a new guest for this wedding</a></button>
+    <div class="row">
+      <div class="col s12 m10">
+        <div class='card' style='padding:20px'>
+        <!-- if guest RVSP'd true, then display them -->
+          <h5>Attending:</h5>
+
+          <% @guests.each do |guest| %>
+            <% if guest.rsvp == true %><i class="tiny material-icons">done</i>
+              <%= guest.name %> |
+              <%= link_to 'Show Info', guest_path(guest) %> |
+              <%= link_to 'Edit', edit_guest_path(guest) %> |
+              <%= link_to 'Remove', guest_path(guest),
+                            method: :delete,
+                            data: { confirm: 'Are you sure?' } %><br>
+            <% end %>
+          <% end %>
+
+<!-- if guest RVSP'd false, then display them here -->
+          <h5>Not attending:</h5>
+
+          <% @guests.each do |guest| %>
+            <% if guest.rsvp == false %><i class="tiny material-icons">not_interested</i>
+              <%= guest.name %> |
+              <%= link_to 'Show Info', guest_path(guest) %> |
+              <%= link_to 'Edit', edit_guest_path(guest) %> |
+              <%= link_to 'Remove', guest_path(guest),
+                          method: :delete,
+                          data: { confirm: 'Are you sure?' } %><br>
+              <% end %>
+            <% end %><br>
+  <!-- <button><a href="/guests/new">Add a new guest for this wedding</a></button> -->
+        </div>
+      </div>
     </div>
+</div>
