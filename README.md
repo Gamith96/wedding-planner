@@ -6,6 +6,10 @@
 
 Our wedding planner is a full-stack application utilizing Ruby on Rails with Posgresql database.
 
+Trello for project ideas
+
+![Trello](https://i.imgur.com/6inSW5W.png)
+
 ERD diagram
 
 ![ERD](https://i.imgur.com/5CafcEP.png)
