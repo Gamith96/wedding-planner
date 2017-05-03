@@ -22,9 +22,11 @@ Wireframe drawings
 
 Technlologies used:
 
-User authentication with Devise or OAuth for Facebook (gem)
+User authentication with Devise or OAuth for Facebook
 
-HTTParty for access to location weather (gem)
+HTTParty for access to the OpenWeatherMap API
+
+Google Street view for location info
 
 Yelp Fusion API for hotel recommendations
 
