@@ -27,8 +27,11 @@ Activemailer for notification of user registration, password resets, and for gue
 
 Materiaize-sass for user interface and design
 
+We tried to integrate Twilio for SMS
 
 #### Unsolved problems
-We tried to integrate Twilio for SMS, but weren't able to get it working
+Learning git - we were able to all make it work for us and share our code, but we'd like to practice more
 
-Pushing to Heroku was a challenge, and is still in progress
+Pushing to Heroku - still in progress
+
+Authorization requests in ajax within rails
