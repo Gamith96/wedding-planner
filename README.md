@@ -40,6 +40,6 @@ Twilio for SMS notification
 #### Unsolved problems
 Learning git - we were able to all make it work for us and share our code, but we'd like to practice more
 
-Pushing to Heroku - still in progress
+Pushing to Heroku is an issue - still in progress
 
 Authorization requests in ajax within rails
